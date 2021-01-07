@@ -49,5 +49,6 @@ public class EventController {
 		URI uri = WebMvcLinkBuilder.linkTo(EventController.class).slash(savedEvent.getId()).toUri();
 		return ResponseEntity.created(uri).body(savedEvent);
 		//linkTo로 생성된 uri정보를 created에 넣어주면 HTTP Header에 Location=http://localhost/api/events/1 정보가 들어간다.
+		
 	}
 }
