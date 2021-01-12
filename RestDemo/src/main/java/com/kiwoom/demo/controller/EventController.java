@@ -35,7 +35,10 @@ public class EventController {
 		
 		if(errors.hasErrors()) {
 			return ResponseEntity.badRequest().body(errors);
-			//body에 Errors를 담아 리턴하지만 Java Bean 스펙이 준수되지 않아 Serialize 되지 않음. Custom한 Serializer를 만들어서 Jackson ObjectMapper에 등록 해줘야 한다.
+			/** 
+			 * body에 Errors를 담아 리턴하지만 Errors 객체는 Java Bean 스펙이 준수되지 않아 Serialize 되지 않음.
+			 * Custom한 Serializer를 만들어서 Jackson ObjectMapper에 등록 해줘야 한다. (@JsonComponent 사용)
+			 */
 		}
 		
 		eventDtoValidator.validate(eventDto, errors);	// 디테일한 별도의 추가적인 validate 체크
